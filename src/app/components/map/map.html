@@ -1,0 +1,20 @@
+<h2>Ubícanos aquí</h2>
+
+    <div class="map-container">
+      <!-- Loader sobrepuesto -->
+      <div class="loader" [class.hide]="!loading">
+        <p>Cargando...</p>
+      </div>
+
+      <!-- Mapa con fade-in -->
+      <iframe
+        [src]="mapUrl | safe"
+        width="600"
+        height="450"
+        style="border:0; opacity: 0; transition: opacity 0.8s;"
+        allowfullscreen
+        loading="lazy"
+        #mapFrame
+        (load)="onMapLoad(mapFrame)">
+      </iframe>
+    </div>

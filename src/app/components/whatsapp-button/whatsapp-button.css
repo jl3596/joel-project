@@ -1,0 +1,25 @@
+.whatsapp-btn {
+  position: fixed;
+  bottom: 30px;      /* Fijo en la parte inferior */
+  right: 30px;       /* Esquina derecha */
+  background: #25D366;
+  color: white;
+  width: 80px;       /* Más grande que antes (60px) */
+  height: 80px;      /* Más grande que antes (60px) */
+  border-radius: 50%; /* Forma circular */
+  text-align: center;
+  font-size: 40px;   /* Ícono más grande (antes 30px) */
+  line-height: 80px; /* Centrado vertical */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+  z-index: 9999;     /* Siempre por encima de todo */
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+}
+
+.whatsapp-btn:hover {
+  background: #128C7E;
+  transform: scale(1.1); /* Efecto de escala al hover */
+}
