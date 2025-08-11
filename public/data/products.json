@@ -1,0 +1,149 @@
+{
+  "lastUpdate": "2025-08-10T10:30:00Z",
+  "products": [
+    {
+      "id": 1,
+      "category": "World",
+      "title": "Featured post",
+      "date": "Nov 12",
+      "description": "This is a wider card with supporting text below as a natural lead-in to additional content.",
+      "thumbnail": "/data/images/image-1.png",
+      "categoryColor": "text-primary"
+    },
+    {
+      "id": 2,
+      "category": "Design",
+      "title": "Post title",
+      "date": "Nov 11",
+      "description": "This is a wider card with supporting text below as a natural lead-in to additional content.",
+      "thumbnail": "/data/images/image-1.png",
+      "categoryColor": "text-success"
+    },
+    {
+      "id": 3,
+      "category": "Technology",
+      "title": "Amazing Innovation",
+      "date": "Nov 10",
+      "description": "Discover the latest technological advances that are changing the world as we know it.",
+      "thumbnail": "/data/images/image-1.png",
+      "categoryColor": "text-warning"
+    },
+    {
+      "id": 4,
+      "category": "Health",
+      "title": "Wellness Tips",
+      "date": "Nov 09",
+      "description": "Learn about the best practices to maintain a healthy lifestyle and improve your well-being.",
+      "thumbnail": "/data/images/image-1.png",
+      "categoryColor": "text-danger"
+    },
+    {
+      "id": 5,
+      "category": "Travel",
+      "title": "Hidden Destinations",
+      "date": "Nov 08",
+      "description": "Explore amazing places around the world that are still undiscovered by most travelers.",
+      "thumbnail": "/data/images/image-1.png",
+      "categoryColor": "text-info"
+    },
+    {
+      "id": 6,
+      "category": "Food",
+      "title": "Culinary Adventures",
+      "date": "Nov 07",
+      "description": "Dive into the world of gastronomy with recipes and stories from renowned chefs.",
+      "thumbnail": "/data/images/image-1.png",
+      "categoryColor": "text-success"
+    },
+    {
+      "id": 7,
+      "category": "Art",
+      "title": "Modern Expressions",
+      "date": "Nov 06",
+      "description": "Contemporary art movements that are reshaping the cultural landscape of our time.",
+      "thumbnail": "/data/images/image-1.png",
+      "categoryColor": "text-primary"
+    },
+    {
+      "id": 8,
+      "category": "Science",
+      "title": "Future Discoveries",
+      "date": "Nov 05",
+      "description": "Scientific breakthroughs that promise to revolutionize our understanding of the universe.",
+      "thumbnail": "/data/images/image-1.png",
+      "categoryColor": "text-warning"
+    },
+    {
+      "id": 9,
+      "category": "Sports",
+      "title": "Championship Moments",
+      "date": "Nov 04",
+      "description": "The most exciting moments from recent sports championships that captivated millions.",
+      "thumbnail": "/data/images/image-1.png",
+      "categoryColor": "text-danger"
+    },
+    {
+      "id": 10,
+      "category": "Sports",
+      "title": "Championship Moments",
+      "date": "Nov 04",
+      "description": "The most exciting moments from recent sports championships that captivated millions.",
+      "thumbnail": "/data/images/image-1.png",
+      "categoryColor": "text-danger"
+    },
+    {
+      "id": 11,
+      "category": "Sports",
+      "title": "Championship Moments",
+      "date": "Nov 04",
+      "description": "The most exciting moments from recent sports championships that captivated millions.",
+      "thumbnail": "/data/images/image-1.png",
+      "categoryColor": "text-danger"
+    },
+    {
+      "id": 12,
+      "category": "Sports",
+      "title": "Championship Moments",
+      "date": "Nov 04",
+      "description": "The most exciting moments from recent sports championships that captivated millions.",
+      "thumbnail": "/data/images/image-1.png",
+      "categoryColor": "text-danger"
+    },
+    {
+      "id": 13,
+      "category": "Sports",
+      "title": "Championship Moments",
+      "date": "Nov 04",
+      "description": "The most exciting moments from recent sports championships that captivated millions.",
+      "thumbnail": "/data/images/image-1.png",
+      "categoryColor": "text-danger"
+    },
+    {
+      "id": 14,
+      "category": "Sports",
+      "title": "Championship Moments",
+      "date": "Nov 04",
+      "description": "The most exciting moments from recent sports championships that captivated millions.",
+      "thumbnail": "/data/images/image-1.png",
+      "categoryColor": "text-danger"
+    },
+    {
+      "id": 15,
+      "category": "Sports",
+      "title": "Championship Moments",
+      "date": "Nov 04",
+      "description": "The most exciting moments from recent sports championships that captivated millions.",
+      "thumbnail": "/data/images/image-1.png",
+      "categoryColor": "text-danger"
+    },
+    {
+      "id": 16,
+      "category": "Sports",
+      "title": "Championship Moments",
+      "date": "Nov 04",
+      "description": "The most exciting moments from recent sports championships that captivated millions.",
+      "thumbnail": "/data/images/image-1.png",
+      "categoryColor": "text-danger"
+    }
+  ]
+}

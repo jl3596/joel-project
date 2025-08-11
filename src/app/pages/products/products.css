@@ -1,0 +1,91 @@
+ .card {
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .badge {
+      background-color: transparent !important;
+      padding: 0;
+      border: none;
+    }
+
+    .text-primary {
+      color: #0d6efd !important;
+    }
+
+    .text-success {
+      color: #198754 !important;
+    }
+
+    .text-warning {
+      color: #ffc107 !important;
+    }
+
+    .text-danger {
+      color: #dc3545 !important;
+    }
+
+    .text-info {
+      color: #0dcaf0 !important;
+    }
+
+    /* Asegurar que las cards mantengan la misma altura */
+    .card .row {
+      min-height: 200px;
+    }
+
+    .pagination .page-link {
+      color: #ffffff;
+      background-color: #6c757d;
+      border: 1px solid #6c757d;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .pagination .page-item.active .page-link {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+      color: #ffffff;
+      box-shadow: 0 2px 4px rgba(13, 110, 253, 0.3);
+    }
+
+    .pagination .page-link:hover {
+      color: #ffffff;
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .pagination .page-item.disabled .page-link {
+      color: #6c757d;
+      background-color: #e9ecef;
+      border-color: #dee2e6;
+      opacity: 0.6;
+    }
+
+    .pagination .page-item.disabled .page-link:hover {
+      color: #6c757d;
+      background-color: #e9ecef;
+      border-color: #dee2e6;
+      transform: none;
+      box-shadow: none;
+    }
+
+    @media (max-width: 768px) {
+      .card .row {
+        min-height: auto;
+      }
+      
+      .col-md-4 {
+        order: -1;
+      }
+      
+      .col-md-8 {
+        order: 1;
+      }
+    }
