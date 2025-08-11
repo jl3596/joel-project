@@ -1,8 +1,8 @@
 import { Component, signal, computed, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/products';
-import { Product } from '../../interfaces/product';
-
+import { Router } from '@angular/router';
+import { Category } from '../../services/category';
 @Component({
   selector: 'app-products',
   standalone: true,
@@ -11,16 +11,29 @@ import { Product } from '../../interfaces/product';
   styleUrl: './products.css',
 })
 export class Products implements OnInit {
+  constructor(private router: Router, private categoryState: Category) {}
+  categorias = [
+    { nombre: 'Sports', activo: true },
+    { nombre: 'Design', activo: false },
+  ];
+
+  oferta = {
+    titulo: 'Ofertas',
+    descripcion: 'En Tableros y Melaminas',
+    img: 'https://via.placeholder.com/300x150',
+  };
+
   private productService = inject(ProductService);
 
   readonly itemsPerPage = 8;
   currentPage = signal(1);
 
-  // Ahora tomamos los productos del servicio directamente
   products = this.productService.products;
 
   totalProducts = computed(() => this.products().length);
-  totalPages = computed(() => Math.ceil(this.totalProducts() / this.itemsPerPage));
+  totalPages = computed(() =>
+    Math.ceil(this.totalProducts() / this.itemsPerPage)
+  );
 
   startIndex = computed(() => (this.currentPage() - 1) * this.itemsPerPage);
   endIndex = computed(() =>
@@ -52,8 +65,16 @@ export class Products implements OnInit {
     return pages;
   });
 
-  ngOnInit(): void {
-    // Ahora inicializamos el servicio aquí (no en su constructor)
+  ngOnInit() {
+    const catFromService = this.categoryState.getCategory();
+    if (catFromService) {
+      this.filterByCategory(catFromService);
+    } else {
+      const categoriaActiva = this.categorias.find((c) => c.activo);
+      if (categoriaActiva) this.filterByCategory(categoriaActiva.nombre);
+    }
+
+    // Inicializa productos **después** de establecer el filtro de categoría
     this.productService.init();
   }
 
@@ -66,5 +87,17 @@ export class Products implements OnInit {
 
   onContinueReading(productId: number): void {
     console.log(`Continue reading product ${productId}`);
+  }
+
+  filterByCategory(cat: string) {
+    this.categorias = this.categorias.map((c) => ({
+      ...c,
+      activo: c.nombre === cat,
+    }));
+    this.productService.setCategory(cat);
+  }
+
+  clearFilter() {
+    this.productService.setCategory('');
   }
 }

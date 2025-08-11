@@ -1,109 +1,105 @@
 <div class="container my-4">
+  <div class="row">
+
+    <!-- Sidenav -->
+    <aside class="col-md-3 col-lg-2 mb-4">
+      <div class="p-3 border rounded shadow-sm bg-white">
+        <h5 class="mb-3">Categorías</h5>
+        <ul class="nav flex-column">
+          @for (cat of categorias; track $index) {
+          <li class="nav-item mb-1">
+            <button type="button" class="btn w-100 text-start" [ngClass]="{
+                    'btn-primary text-white': cat.activo,
+                    'btn-light text-dark': !cat.activo
+                  }" (click)="filterByCategory(cat.nombre)">
+              {{ cat.nombre }}
+            </button>
+          </li>
+          }
+        </ul>
+
+        <!-- <div class="offer-card mt-4 p-3 shadow-sm text-center">
+          <img [src]="oferta.img" alt="Ofertas" class="img-fluid mb-2">
+          <h6>{{ oferta.titulo }}</h6>
+          <p class="small mb-2">{{ oferta.descripcion }}</p>
+          <a href="#" class="btn btn-sm btn-dark">Compra Ahora</a>
+        </div> -->
+      </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <section class="col-md-9 col-lg-10">
       <!-- Cards Grid -->
       <div class="row g-4">
         @for (post of currentPagePosts(); track post.id) {
-          <div class="col-md-6">
-            <div class="card h-100 border-0 shadow-sm">
-              <div class="row g-0 h-100">
-                <!-- Contenido del texto -->
-                <div class="col-md-8">
-                  <div class="card-body d-flex flex-column h-100">
-                    <!-- Categoría -->
-                    <span class="badge rounded-pill mb-2 align-self-start" 
-                          [class]="post.categoryColor"
-                          style="font-size: 0.75rem; font-weight: 600;">
-                      {{ post.category }}
-                    </span>
-                    
-                    <!-- Título -->
-                    <h5 class="card-title fw-bold text-dark mb-2">
-                      {{ post.title }}
-                    </h5>
-                    
-                    <!-- Fecha -->
-                    <p class="text-muted small mb-3">
-                      {{ post.date }}
-                    </p>
-                    
-                    <!-- Descripción -->
-                    <p class="card-text text-muted flex-grow-1">
-                      {{ post.description }}
-                    </p>
-                    
-                    <!-- Enlace Continue reading -->
-                    <a href="#" 
-                       class="text-decoration-none mt-auto"
-                       [class]="post.categoryColor"
-                       (click)="onContinueReading(post.id); $event.preventDefault()">
-                      Continue reading
-                    </a>
-                  </div>
+        <div class="col-md-6">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="row g-0 h-100">
+              <div class="col-md-8">
+                <div class="card-body d-flex flex-column h-100">
+                  <span class="badge rounded-pill mb-2 align-self-start" [class]="post.categoryColor"
+                    style="font-size: 0.75rem; font-weight: 600;">
+                    {{ post.category }}
+                  </span>
+                  <h5 class="card-title fw-bold text-dark mb-2">
+                    {{ post.title }}
+                  </h5>
+                  <p class="text-muted small mb-3">
+                    {{ post.date }}
+                  </p>
+                  <p class="card-text text-muted flex-grow-1">
+                    {{ post.description }}
+                  </p>
+                  <a href="#" class="text-decoration-none mt-auto" [class]="post.categoryColor"
+                    (click)="onContinueReading(post.id); $event.preventDefault()">
+                    Continue reading
+                  </a>
                 </div>
-                
-                <!-- Imagen thumbnail -->
-                <div class="col-md-4">
-                  <div class="h-100 position-relative overflow-hidden rounded-end">
-                    <img [src]="post.thumbnail" 
-                         class="img-fluid h-100 w-100" 
-                         style="object-fit: cover;"
-                         [alt]="post.title + ' thumbnail'">
-                  </div>
+              </div>
+              <div class="col-md-4">
+                <div class="h-100 position-relative overflow-hidden rounded-end">
+                  <img [src]="post.thumbnail" class="img-fluid h-100 w-100" style="object-fit: cover;"
+                    [alt]="post.title + ' thumbnail'">
                 </div>
               </div>
             </div>
           </div>
+        </div>
         }
       </div>
 
-      <!-- Paginación - Solo mostrar si hay más de una página -->
+      <!-- Paginación -->
       @if (totalPages() > 1) {
-        <nav aria-label="Posts pagination" class="mt-5">
-          <ul class="pagination justify-content-center">
-            <li class="page-item" [class.disabled]="currentPage() === 1">
-              <a class="page-link" 
-                 href="#" 
-                 (click)="goToPage(currentPage() - 1); $event.preventDefault()"
-                 aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            
-            @for (page of visiblePages(); track page) {
-              <li class="page-item" [class.active]="page === currentPage()">
-                <a class="page-link" 
-                   href="#" 
-                   (click)="goToPage(page); $event.preventDefault()">
-                  {{ page }}
-                </a>
-              </li>
-            }
-            
-            <li class="page-item" [class.disabled]="currentPage() === totalPages()">
-              <a class="page-link" 
-                 href="#" 
-                 (click)="goToPage(currentPage() + 1); $event.preventDefault()"
-                 aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-
-        <!-- Info de paginación -->
-        <div class="d-flex justify-content-center mt-3">
-          <small class="text-muted">
-            Mostrando {{ startIndex() + 1 }} - {{ endIndex() }} de {{ totalProducts() }} productos
-          </small>
-        </div>
+      <nav aria-label="Posts pagination" class="mt-5">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" [class.disabled]="currentPage() === 1">
+            <a class="page-link" href="#" (click)="goToPage(currentPage() - 1); $event.preventDefault()"
+              aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          @for (page of visiblePages(); track page) {
+          <li class="page-item" [class.active]="page === currentPage()">
+            <a class="page-link" href="#" (click)="goToPage(page); $event.preventDefault()">
+              {{ page }}
+            </a>
+          </li>
+          }
+          <li class="page-item" [class.disabled]="currentPage() === totalPages()">
+            <a class="page-link" href="#" (click)="goToPage(currentPage() + 1); $event.preventDefault()"
+              aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="d-flex justify-content-center mt-3">
+        <small class="text-muted">
+          Mostrando {{ startIndex() + 1 }} - {{ endIndex() }} de {{ totalProducts() }} productos
+        </small>
+      </div>
       }
+    </section>
 
-      <!-- Info de paginación y controles de debug -->
-      <!-- <div class="d-flex justify-content-center mt-3 flex-column align-items-center">
-        <small class="text-muted mb-2">
-          Mostrando {{ startIndex() + 1 }} - {{ endIndex() }} de {{ totalPosts() }} posts
-        </small>
-        <small class="text-info">
-          Página {{ currentPage() }} de {{ totalPages() }} | Items por página: {{ itemsPerPage }}
-        </small>
-      </div> -->
-    </div>
+  </div>
+</div>

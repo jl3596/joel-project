@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
@@ -8,49 +8,58 @@ import { Product, ProductsData } from '../interfaces/product';
   providedIn: 'root',
 })
 export class ProductService {
-  // Ruta correcta si lo pones en src/assets/products/products.json
   private readonly PRODUCTS_DATA_URL = '/data/products.json';
 
-  // Signals
-  products = signal<Product[]>([]);
+  // Estado
+  allProducts = signal<Product[]>([]);   // Siempre contiene todo
+  selectedCategory = signal<string>(''); // Categoría seleccionada
   loading = signal<boolean>(false);
   lastUpdate = signal<string>('');
 
+  // Vista filtrada (se recalcula sola)
+  products = computed(() => {
+    const category = this.selectedCategory().toLowerCase();
+    const items = this.allProducts();
+
+    if (!category) return items; // Si no hay categoría, muestra todo
+
+    return items.filter(p => p.category.toLowerCase() === category);
+  });
+
   constructor(private http: HttpClient) {}
 
-  /** Carga inicial, llamarlo desde el componente */
   init(): void {
     this.loadProductsData().subscribe();
   }
 
-  /** Cargar datos desde el JSON */
   loadProductsData(): Observable<ProductsData> {
     this.loading.set(true);
 
     return this.http.get<ProductsData>(this.PRODUCTS_DATA_URL).pipe(
-      tap((data: ProductsData) => {
-        this.products.set(data.products);
+      tap((data) => {
+        this.allProducts.set(data.products);
         this.lastUpdate.set(data.lastUpdate);
       }),
-      catchError((error) => {
-        this.products.set([]);
-        this.lastUpdate.set(new Date().toISOString());
-        return of({
-          lastUpdate: new Date().toISOString(),
-          products: [],
-        });
+      catchError(() => {
+        const fallback = { lastUpdate: new Date().toISOString(), products: [] };
+        this.allProducts.set(fallback.products);
+        this.lastUpdate.set(fallback.lastUpdate);
+        return of(fallback);
       }),
       tap(() => this.loading.set(false))
     );
   }
 
-  /** Refrescar datos manualmente */
   refresh(): void {
     this.loadProductsData().subscribe();
   }
 
-  /** Buscar por ID */
-  getProductById(id: number): Product | undefined {
-    return this.products().find(product => product.id === id);
+  setCategory(category: string): void {
+    this.selectedCategory.set(category);
   }
+
+  getProductById(id: number): Product | undefined {
+    return this.allProducts().find(p => p.id === id);
+  }
+  
 }

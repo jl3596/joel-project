@@ -89,3 +89,18 @@
         order: 1;
       }
     }
+
+
+.sidenav {
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.offer-card {
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+}
+
+.offer-card img {
+  border-radius: 0.5rem;
+}

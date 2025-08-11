@@ -3,7 +3,7 @@
   "products": [
     {
       "id": 1,
-      "category": "World",
+      "category": "World JOEL ESTUVO AQUI",
       "title": "Featured post",
       "date": "Nov 12",
       "description": "This is a wider card with supporting text below as a natural lead-in to additional content.",
@@ -57,7 +57,7 @@
     },
     {
       "id": 7,
-      "category": "Art",
+      "category": "Sports",
       "title": "Modern Expressions",
       "date": "Nov 06",
       "description": "Contemporary art movements that are reshaping the cultural landscape of our time.",
@@ -66,7 +66,7 @@
     },
     {
       "id": 8,
-      "category": "Science",
+      "category": "Sports",
       "title": "Future Discoveries",
       "date": "Nov 05",
       "description": "Scientific breakthroughs that promise to revolutionize our understanding of the universe.",
